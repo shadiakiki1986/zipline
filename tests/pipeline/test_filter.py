@@ -35,7 +35,10 @@ from zipline.testing import parameter_space, permute_rows, ZiplineTestCase
 from zipline.testing.fixtures import WithSeededRandomPipelineEngine
 from zipline.testing.predicates import assert_equal
 from zipline.utils.numpy_utils import float64_dtype, int64_dtype
-from .base import BasePipelineTestCase, with_default_shape
+from zipline.testing.pipeline_base import (
+    BasePipelineTestCase,
+    with_default_shape
+)
 
 
 def rowwise_rank(array, mask=None):

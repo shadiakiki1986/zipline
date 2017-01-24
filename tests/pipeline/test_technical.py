@@ -22,8 +22,8 @@ from zipline.pipeline.factors import (
 )
 from zipline.testing import parameter_space
 from zipline.testing.fixtures import ZiplineTestCase
+from zipline.testing.pipeline_base import BasePipelineTestCase
 from zipline.testing.predicates import assert_equal
-from .base import BasePipelineTestCase
 
 
 class BollingerBandsTestCase(BasePipelineTestCase):

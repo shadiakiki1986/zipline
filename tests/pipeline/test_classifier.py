@@ -8,13 +8,12 @@ from zipline.lib.labelarray import LabelArray
 from zipline.pipeline import Classifier
 from zipline.testing import parameter_space
 from zipline.testing.fixtures import ZiplineTestCase
+from zipline.testing.pipeline_base import BasePipelineTestCase
 from zipline.testing.predicates import assert_equal
 from zipline.utils.numpy_utils import (
     categorical_dtype,
     int64_dtype,
 )
-
-from .base import BasePipelineTestCase
 
 
 bytes_dtype = np.dtype('S3')

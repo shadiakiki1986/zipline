@@ -39,6 +39,7 @@ from zipline.testing import (
     permute_rows,
 )
 from zipline.testing.fixtures import ZiplineTestCase
+from zipline.testing.pipeline_base import BasePipelineTestCase
 from zipline.testing.predicates import assert_equal
 from zipline.utils.numpy_utils import (
     categorical_dtype,
@@ -48,8 +49,6 @@ from zipline.utils.numpy_utils import (
     NaTns,
 )
 from zipline.utils.math_utils import nanmean, nanstd
-
-from .base import BasePipelineTestCase
 
 
 class F(Factor):
