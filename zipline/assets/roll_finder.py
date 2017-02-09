@@ -15,8 +15,6 @@
 from abc import ABCMeta, abstractmethod
 from six import with_metaclass
 
-VOLUME_GRACE_DAYS = 7
-
 
 class RollFinder(with_metaclass(ABCMeta, object)):
     """
@@ -138,7 +136,7 @@ class VolumeRollFinder(RollFinder):
     The CalendarRollFinder calculates contract rolls based on when
     volume activity transfers from one contract to another.
     """
-
+    GRACE_DAYS = 7
     THRESHOLD = 0.10
 
     def __init__(self, trading_calendar, asset_finder, session_reader):
@@ -180,7 +178,7 @@ class VolumeRollFinder(RollFinder):
             return back
 
         gap_start = \
-            front_contract.auto_close_date - (trading_day * VOLUME_GRACE_DAYS)
+            front_contract.auto_close_date - (trading_day * self.GRACE_DAYS)
         gap_end = prev - trading_day
         if dt < gap_start:
             return front
