@@ -364,7 +364,12 @@ class ContinuousFuturesTestCase(WithCreateBarData,
             else:
                 self.assertEqual(contract.symbol, 'DFG16')
 
-        # TODO: Not sure what this behavior should be.
+        # TODO: This test asserts behavior about a back contract briefly
+        # spiking in volume, but more than a week before the front contract's
+        # auto close date, meaning it does not fall in the 'grace' period used
+        # by `VolumeRollFinder._active_contract`. The current behavior is that
+        # during the spike, the back contract is considered current, but it may
+        # be worth changing that in the future.
         # sessions = self.trading_calendar.sessions_in_range(
         #     '2016-03-01', '2016-03-21',
         # )

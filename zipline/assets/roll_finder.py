@@ -106,7 +106,7 @@ class RollFinder(with_metaclass(ABCMeta, object)):
                         break
                 if back != self._active_contract(oc, front, back, prev):
                     # TODO: Instead of listing each contract with its roll date
-                    # as tuples, create series of every day mapping to the
+                    # as tuples, create a series which maps every day to the
                     # active contract on that day.
                     rolls.insert(0, ((curr >> offset).contract.sid, session))
                     break
