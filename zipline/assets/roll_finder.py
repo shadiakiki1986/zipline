@@ -105,6 +105,9 @@ class RollFinder(with_metaclass(ABCMeta, object)):
                     if prev < prev_c.contract.auto_close_date:
                         break
                 if back != self._active_contract(oc, front, back, prev):
+                    # TODO: Instead of listing each contract with its roll date
+                    # as tuples, create series of every day mapping to the
+                    # active contract on that day.
                     rolls.insert(0, ((curr >> offset).contract.sid, session))
                     break
                 session = prev
@@ -151,12 +154,12 @@ class VolumeRollFinder(RollFinder):
         In the rare case that a double volume switch occurs we treat the first
         switch as the roll. Take the following case for example:
 
-        | _____             _____
-        |      \   __      /       <--- 'G'
-        |       \_/__\____/__
-        |       _/    \__/   \
-        |      /              \
-        | ____/                \   <--- 'F'
+        | +++++             _____
+        |      +   __      /       <--- 'G'
+        |       ++/++\++++/++
+        |       _/    \__/   +
+        |      /              +
+        | ____/                +   <--- 'F'
         |_________|__|___|________
                   a  b   c         <--- Switches
 
